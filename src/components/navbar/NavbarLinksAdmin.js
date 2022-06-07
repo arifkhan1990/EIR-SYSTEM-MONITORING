@@ -19,7 +19,7 @@ import { ItemContent } from "components/menu/ItemContent";
 import { SearchBar } from "components/navbar/searchBar/SearchBar";
 import { SidebarResponsive } from "components/sidebar/Sidebar";
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useEffect} from "react";
 // Assets
 import navImage from "assets/img/layout/Navbar.png";
 import { MdNotificationsNone, MdInfoOutline } from "react-icons/md";
@@ -29,6 +29,7 @@ import routes from "routes.js";
 export default function HeaderLinks(props) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
+  console.log({colorMode});
   // Chakra Color Mode
   const navbarIcon = useColorModeValue("gray.400", "white");
   let menuBg = useColorModeValue("white", "navy.800");
@@ -43,6 +44,11 @@ export default function HeaderLinks(props) {
     "14px 17px 40px 4px rgba(112, 144, 176, 0.06)"
   );
   const borderButton = useColorModeValue("secondaryGray.500", "whiteAlpha.200");
+  useEffect(() => {
+    if(colorMode == 'light') {
+      toggleColorMode()
+    }
+  }, []);
   return (
     <Flex
       w={{ sm: "100%", md: "auto" }}
@@ -111,40 +117,6 @@ export default function HeaderLinks(props) {
           me={{ base: "30px", md: "unset" }}
           minW={{ base: "unset", md: "400px", xl: "450px" }}
           maxW={{ base: "360px", md: "unset" }}>
-          <Flex jusitfy='space-between' w='100%' mb='20px'>
-            <Text fontSize='md' fontWeight='600' color={textColor}>
-              Notifications
-            </Text>
-            <Text
-              fontSize='sm'
-              fontWeight='500'
-              color={textColorBrand}
-              ms='auto'
-              cursor='pointer'>
-              Mark all read
-            </Text>
-          </Flex>
-          <Flex flexDirection='column'>
-            <MenuItem
-              _hover={{ bg: "none" }}
-              _focus={{ bg: "none" }}
-              px='0'
-              borderRadius='8px'
-              mb='10px'>
-              <ItemContent info='Horizon UI Dashboard PRO' aName='Alicia' />
-            </MenuItem>
-            <MenuItem
-              _hover={{ bg: "none" }}
-              _focus={{ bg: "none" }}
-              px='0'
-              borderRadius='8px'
-              mb='10px'>
-              <ItemContent
-                info='Horizon Design System Free'
-                aName='Josh Henry'
-              />
-            </MenuItem>
-          </Flex>
         </MenuList>
       </Menu>
 
@@ -169,38 +141,7 @@ export default function HeaderLinks(props) {
           mt='22px'
           minW={{ base: "unset" }}
           maxW={{ base: "360px", md: "unset" }}>
-          <Image src={navImage} borderRadius='16px' mb='28px' />
           <Flex flexDirection='column'>
-            <Link w='100%' href='https://horizon-ui.com/pro'>
-              <Button w='100%' h='44px' mb='10px' variant='brand'>
-                Buy Horizon UI PRO
-              </Button>
-            </Link>
-            <Link
-              w='100%'
-              href='https://horizon-ui.com/documentation/docs/introduction'>
-              <Button
-                w='100%'
-                h='44px'
-                mb='10px'
-                border='1px solid'
-                bg='transparent'
-                borderColor={borderButton}>
-                See Documentation
-              </Button>
-            </Link>
-            <Link
-              w='100%'
-              href='https://github.com/horizon-ui/horizon-ui-chakra'>
-              <Button
-                w='100%'
-                h='44px'
-                variant='no-hover'
-                color={textColor}
-                bg='transparent'>
-                Try Horizon Free
-              </Button>
-            </Link>
           </Flex>
         </MenuList>
       </Menu>
