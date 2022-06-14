@@ -208,9 +208,9 @@ export const barChartOptionsConsumption = {
   },
 };
 
-export const pieChartOptions = {
-  labels: ["Your files", "System", "Empty"],
-  colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+export const callListpieChartOptions = {
+  labels: ["Processing", "Fail"],
+  colors: ["#8BBA5F", "#C13216"],
   chart: {
     width: "50px",
   },
@@ -239,15 +239,64 @@ export const pieChartOptions = {
     },
   },
   fill: {
-    colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+    colors: ["#8BBA5F", "#C13216"],
   },
   tooltip: {
     enabled: true,
-    theme: "dark",
+    theme: "light",
   },
 };
 
-export const pieChartData = [63, 25, 12];
+export const callListpieChartData = [67, 33];
+
+
+export const callListChartOptions = {
+        chart: {
+          width: 400,
+          type: 'polarArea'
+        },
+        labels: ['WhiteList', 'BlackList', 'GrayList'],
+        colors: ["#ffffff", "#000000", "#808080"],
+        fill: {
+          colors: ["#ffffff", "#000000", "#808080"],
+          opacity: 1,
+        },
+        stroke: {
+          colors: ["#ffffff", "#000000", "#808080"],
+          width: 1,
+        },
+        yaxis: {
+          show: false,
+        },
+        legend: {
+          position: 'bottom',
+        },
+        plotOptions: {
+          polarArea: {
+            rings: {
+              strokeWidth: 0,
+              colors: ["#ffffff", "#000000", "#808080"],
+            },
+            spokes: {
+              strokeWidth: 0,
+              colors: ["#ffffff", "#000000", "#808080"],
+            },
+          }
+        },
+        theme: {
+          monochrome: {
+            enabled: true,
+            shadeTo: 'light',
+            shadeIntensity: 0.6,
+            style: {
+              colors: ["#ffffff", "#000000", "#808080"],
+            }
+          }
+        }
+  };
+
+
+export const callListChartData = [];
 
 // Total Spent Default
 

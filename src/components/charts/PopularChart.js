@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-class PieChart extends React.Component {
+class PopularChart extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       chartData: [],
       chartOptions: {},
@@ -23,12 +23,12 @@ class PieChart extends React.Component {
       <ReactApexChart
         options={this.state.chartOptions}
         series={this.state.chartData}
-        type='pie'
-        width='280px'
-        height='280px'
+        type='polarArea'
+        width='300px'
+        height='300px'
       />
     );
   }
 }
 
-export default PieChart;
+export default PopularChart;

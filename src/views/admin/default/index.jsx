@@ -39,6 +39,9 @@ import {
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
 import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
 import { VSeparator, HSeparator } from "components/separator/Separator";
+import DailyTraffic from "views/admin/default/components/DailyTraffic";
+import PopularCard from "views/admin/default/components/PopularCard";
+import PieCard from "views/admin/default/components/PieCard";
 
 export default function UserReports() {
   // Chakra Color Mode
@@ -159,21 +162,27 @@ export default function UserReports() {
             mb='20px'
             >
             {dashboardAppInfo.map((data, key) => (
-            <MiniStatistics
-              startContent={
-                <IconBox
-                  w='56px'
-                  h='56px'
-                  bg={data.link_status == 1 ?'linear-gradient(90deg, #287f14 0%, #6bc35f 100%)' : 'linear-gradient(90deg, #de6a4e 0%, #741b1b 100%)'}
-                  icon={<Icon w='28px' h='28px' as={data.link_status == 1? MdAddTask: MdCancel} color='white' />}
-                />
-              }
-              value={data.link_name}
-              name={data.link_status == 1 ? 'Connected' : 'Disconnected'}
-              bg={data.link_status == 1 ? '#04B45F' : '#c82d2d'}
-              // value='$350.4'
-            />
-                  ))}
+              <MiniStatistics
+                startContent={
+                  <IconBox
+                    w='56px'
+                    h='56px'
+                    bg={data.link_status == 1 ?'linear-gradient(90deg, #287f14 0%, #6bc35f 100%)' : 'linear-gradient(90deg, #de6a4e 0%, #741b1b 100%)'}
+                    icon={<Icon w='28px' h='28px' as={data.link_status == 1? MdAddTask: MdCancel} color='white' />}
+                  />
+                }
+                value={data.link_name}
+                name={data.link_status == 1 ? 'Connected' : 'Disconnected'}
+                bg={data.link_status == 1 ? '#04B45F' : '#c82d2d'}
+                // value='$350.4'
+              />
+            ))}
+          </SimpleGrid>
+
+
+          <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
+            <PopularCard />
+            <PieCard />
           </SimpleGrid>
     </Box>
   );
