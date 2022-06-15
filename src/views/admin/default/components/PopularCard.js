@@ -1,13 +1,13 @@
 // Chakra imports
-import { Box, Flex, Text, Select, Icon, useColorModeValue } from "@chakra-ui/react";
-
+import { Box, Flex, Select, Text, useColorModeValue } from "@chakra-ui/react";
 // Custom components
 import Card from "components/card/Card.js";
-import PopularChart from "components/charts/PopularChart";
-import { callListChartData, callListChartOptions } from "variables/charts";
+//import PopularChart from "components/charts/PopularChart";
+import PopularChart from "components/charts/popularChart_2";
 import { VSeparator } from "components/separator/Separator";
-import React, {useState, useEffect} from "react";
-import { RiArrowUpSFill } from "react-icons/ri";
+import React, { useEffect, useState } from "react";
+import { callListChartOptions } from "variables/charts";
+
 
 export default function Conversion(props) {
   const { ...rest } = props;
@@ -61,7 +61,7 @@ export default function Conversion(props) {
     fetchData();
   },[])
 
-  console.log({popularCharData});
+  //console.log({popularCharData});
   // //callListChartData = popularCharData;
   // console.log({callListChartData});
   // Chakra Color Mode
@@ -100,7 +100,7 @@ export default function Conversion(props) {
       <PopularChart
         h='100%'
         w='100%'
-        chartData={[76, 22,19]}
+        chartData={popularCharData.length>0? popularCharData : [90, 22,19]}
         chartOptions={callListChartOptions}
       />
 
@@ -126,7 +126,7 @@ export default function Conversion(props) {
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-            76
+            {popularCharData.length>0?popularCharData[0]: 90}
           </Text>
         </Flex>
         <VSeparator mx={{ base: "60px", xl: "60px", "2xl": "60px" }} />
@@ -142,7 +142,7 @@ export default function Conversion(props) {
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-           44
+            {popularCharData.length>0?popularCharData[1]: 40}
           </Text>
         </Flex>
         <VSeparator mx={{ base: "60px", xl: "60px", "2xl": "60px" }} />
@@ -158,7 +158,7 @@ export default function Conversion(props) {
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-            26
+            {popularCharData.length>0?popularCharData[2]: 20}
           </Text>
         </Flex>
       </Card>
