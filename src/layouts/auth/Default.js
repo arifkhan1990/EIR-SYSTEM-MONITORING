@@ -35,22 +35,6 @@ function AuthIllustration(props) {
             width: "fit-content",
             marginTop: "40px",
           })}>
-          <Flex
-            align='center'
-            ps={{ base: "25px", lg: "0px" }}
-            pt={{ lg: "0px", xl: "0px" }}
-            w='fit-content'>
-            <Icon
-              as={FaChevronLeft}
-              me='12px'
-              h='13px'
-              w='8px'
-              color='secondaryGray.600'
-            />
-            <Text ms='0px' fontSize='sm' color='secondaryGray.600'>
-              Back to Simmmple
-            </Text>
-          </Flex>
         </NavLink>
         {children}
         <Box
@@ -63,17 +47,17 @@ function AuthIllustration(props) {
           <Flex
             bg={`url(${illustrationBackground})`}
             justify='center'
-            align='end'
+            align='center'
             w='100%'
-            h='100%'
-            bgSize='cover'
+            h='88%'
+            bgSize='fill'
+            bgRepeat='no-repeat'
             bgPosition='50%'
             position='absolute'
-            borderBottomLeftRadius={{ lg: "120px", xl: "200px" }}></Flex>
+            borderBottomLeftRadius={{ lg: "110px", xl: "180px" }}></Flex>
         </Box>
         <Footer />
       </Flex>
-      <FixedPlugin />
     </Flex>
   );
 }

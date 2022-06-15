@@ -1,27 +1,5 @@
-/*!
-  _   _  ___  ____  ___ ________  _   _   _   _ ___   
- | | | |/ _ \|  _ \|_ _|__  / _ \| \ | | | | | |_ _| 
- | |_| | | | | |_) || |  / / | | |  \| | | | | || | 
- |  _  | |_| |  _ < | | / /| |_| | |\  | | |_| || |
- |_| |_|\___/|_| \_\___/____\___/|_| \_|  \___/|___|
-                                                                                                                                                                                                                                                                                                                                       
-=========================================================
-* Horizon UI - v1.1.0
-=========================================================
-
-* Product Page: https://www.horizon-ui.com/
-* Copyright 2022 Horizon UI (https://www.horizon-ui.com/)
-
-* Designed and Coded by Simmmple
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React,{useState, useEffect} from "react";
+import { NavLink, useHistory } from "react-router-dom";
 // Chakra imports
 import {
   Box,
@@ -42,7 +20,7 @@ import {
 import { HSeparator } from "components/separator/Separator";
 import DefaultAuth from "layouts/auth/Default";
 // Assets
-import illustration from "assets/img/auth/auth.png";
+import illustration from "assets/img/auth/taletalk1.png";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
@@ -66,6 +44,40 @@ function SignIn() {
   );
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  useEffect(() =>{
+    if (localStorage.getItem('login-info')){
+      history.push("/admin");
+    }
+  }, []);
+
+  function login(){
+    console.warn(email, password);
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var login_data = JSON.stringify({'email': email, 'password': password});
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: login_data
+    };
+
+    fetch("http://103.159.37.7:4100/api/users/login", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        localStorage.setItem('login-info',JSON.stringify(result));
+        history.push("/admin");
+      })
+      .catch(error => console.log('error', error));
+  }
+
   return (
     <DefaultAuth illustrationBackground={illustration} image={illustration}>
       <Flex
@@ -103,29 +115,7 @@ function SignIn() {
           mx={{ base: "auto", lg: "unset" }}
           me='auto'
           mb={{ base: "20px", md: "auto" }}>
-          <Button
-            fontSize='sm'
-            me='0px'
-            mb='26px'
-            py='15px'
-            h='50px'
-            borderRadius='16px'
-            bg={googleBg}
-            color={googleText}
-            fontWeight='500'
-            _hover={googleHover}
-            _active={googleActive}
-            _focus={googleActive}>
-            <Icon as={FcGoogle} w='20px' h='20px' me='10px' />
-            Sign in with Google
-          </Button>
-          <Flex align='center' mb='25px'>
-            <HSeparator />
-            <Text color='gray.400' mx='14px'>
-              or
-            </Text>
-            <HSeparator />
-          </Flex>
+
           <FormControl>
             <FormLabel
               display='flex'
@@ -146,6 +136,7 @@ function SignIn() {
               mb='24px'
               fontWeight='500'
               size='lg'
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <FormLabel
               ms='4px'
@@ -165,6 +156,7 @@ function SignIn() {
                 size='lg'
                 type={show ? "text" : "password"}
                 variant='auth'
+                onChange={(e)=>setPassword(e.target.value)}
               />
               <InputRightElement display='flex' alignItems='center' mt='4px'>
                 <Icon
@@ -175,33 +167,8 @@ function SignIn() {
                 />
               </InputRightElement>
             </InputGroup>
-            <Flex justifyContent='space-between' align='center' mb='24px'>
-              <FormControl display='flex' alignItems='center'>
-                <Checkbox
-                  id='remember-login'
-                  colorScheme='brandScheme'
-                  me='10px'
-                />
-                <FormLabel
-                  htmlFor='remember-login'
-                  mb='0'
-                  fontWeight='normal'
-                  color={textColor}
-                  fontSize='sm'>
-                  Keep me logged in
-                </FormLabel>
-              </FormControl>
-              <NavLink to='/auth/forgot-password'>
-                <Text
-                  color={textColorBrand}
-                  fontSize='sm'
-                  w='124px'
-                  fontWeight='500'>
-                  Forgot password?
-                </Text>
-              </NavLink>
-            </Flex>
             <Button
+              onClick={login}
               fontSize='sm'
               variant='brand'
               fontWeight='500'
@@ -211,25 +178,6 @@ function SignIn() {
               Sign In
             </Button>
           </FormControl>
-          <Flex
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='start'
-            maxW='100%'
-            mt='0px'>
-            <Text color={textColorDetails} fontWeight='400' fontSize='14px'>
-              Not registered yet?
-              <NavLink to='/auth/sign-up'>
-                <Text
-                  color={textColorBrand}
-                  as='span'
-                  ms='5px'
-                  fontWeight='500'>
-                  Create an Account
-                </Text>
-              </NavLink>
-            </Text>
-          </Flex>
         </Flex>
       </Flex>
     </DefaultAuth>

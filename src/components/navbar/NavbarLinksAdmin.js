@@ -20,6 +20,7 @@ import { SearchBar } from "components/navbar/searchBar/SearchBar";
 import { SidebarResponsive } from "components/sidebar/Sidebar";
 import PropTypes from "prop-types";
 import React, {useEffect} from "react";
+import { NavLink, useHistory } from "react-router-dom";
 // Assets
 import navImage from "assets/img/layout/Navbar.png";
 import { MdNotificationsNone, MdInfoOutline } from "react-icons/md";
@@ -30,6 +31,8 @@ export default function HeaderLinks(props) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
   console.log({colorMode});
+
+  const history = useHistory();
   // Chakra Color Mode
   const navbarIcon = useColorModeValue("gray.400", "white");
   let menuBg = useColorModeValue("white", "navy.800");
@@ -49,6 +52,12 @@ export default function HeaderLinks(props) {
       toggleColorMode()
     }
   }, []);
+
+  function logout() {
+    localStorage.removeItem('login-info');
+    history.push('/auth/sign-in');
+  }
+
   return (
     <Flex
       w={{ sm: "100%", md: "auto" }}
@@ -216,7 +225,9 @@ export default function HeaderLinks(props) {
               _focus={{ bg: "none" }}
               color='red.400'
               borderRadius='8px'
-              px='14px'>
+              px='14px'
+              onClick={logout}
+            >
               <Text fontSize='sm'>Log out</Text>
             </MenuItem>
           </Flex>

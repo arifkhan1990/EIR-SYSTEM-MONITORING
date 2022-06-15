@@ -42,7 +42,7 @@ import { VSeparator, HSeparator } from "components/separator/Separator";
 import DailyTraffic from "views/admin/default/components/DailyTraffic";
 import PopularCard from "views/admin/default/components/PopularCard";
 import PieCard from "views/admin/default/components/PieCard";
-
+import { NavLink, useHistory } from "react-router-dom";
 export default function UserReports() {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
@@ -50,6 +50,15 @@ export default function UserReports() {
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const [dashboardSysInfo, setdashboardSysInfo] = useState([]);
   const [dashboardAppInfo, setdashboardAppInfo] = useState([]);
+  const history = useHistory();
+  
+  useEffect(() =>{
+    if (localStorage.getItem('login-info')){
+      history.push("/admin");
+    }else{
+      history.push('/auth/sign-in');
+    }
+  }, []);
 
   useEffect(() => {
     var requestOptions = {
