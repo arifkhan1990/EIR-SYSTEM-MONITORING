@@ -72,8 +72,12 @@ function SignIn() {
     fetch("http://103.159.37.7:4100/api/users/login", requestOptions)
       .then(response => response.json())
       .then(result => {
-        localStorage.setItem('login-info',JSON.stringify(result));
-        history.push("/admin");
+        if(result.message == 'Auth Success') {
+          localStorage.setItem('login-info',JSON.stringify(result));
+          history.push("/admin");
+        }else {
+          alert('Email or Password incorrect !.');
+        }
       })
       .catch(error => console.log('error', error));
   }
