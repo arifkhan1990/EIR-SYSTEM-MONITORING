@@ -11,7 +11,7 @@ export default function Conversion(props) {
   const { ...rest } = props;
 
 
- const [dm, setdm] = useState([75, 23]);
+ const [dm, setdm] = useState([61, 39]);
 
   // Chakra Color Mode
   const textColor = useColorModeValue("secondaryGray.900", "white");
@@ -61,7 +61,7 @@ export default function Conversion(props) {
         mx='auto'>
         <Flex direction='column' py='5px'>
           <Flex align='center'>
-            <Box h='8px' w='8px' bg='#8BBA5F' borderRadius='50%' me='4px' />
+            <Box h='8px' w='8px' bg='#7DCEA0' borderRadius='50%' me='4px' />
             <Text
               fontSize='xs'
               color='secondaryGray.600'
@@ -71,23 +71,23 @@ export default function Conversion(props) {
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-            67
+            61
           </Text>
         </Flex>
         <VSeparator mx={{ base: "60px", xl: "60px", "2xl": "60px" }} />
         <Flex direction='column' py='5px' me='10px'>
           <Flex align='center'>
-            <Box h='8px' w='8px' bg='#C13216' borderRadius='50%' me='4px' />
+            <Box h='8px' w='8px' bg='#9B59B6' borderRadius='50%' me='4px' />
             <Text
               fontSize='xs'
               color='secondaryGray.600'
               fontWeight='700'
               mb='5px'>
-              Fail
+              Already Exists
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-            33
+            39
           </Text>
         </Flex>
       </Card>

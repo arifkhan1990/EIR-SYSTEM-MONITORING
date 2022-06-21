@@ -41,13 +41,13 @@ export default function Footer() {
           <Link
             mx='3px'
             color={textColor}
-            href='http://entertechbd.com/'
+            href='#'
             target='_blank'
             fontWeight='700'
             color='#FF3E00'
             cursor='pointer'
             >
-            Entertech.
+            Radisson Technologies Ltd.
           </Link>
         </Text>
         <Text as='span' fontWeight='500' ms='4px'>

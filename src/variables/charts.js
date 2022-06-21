@@ -209,8 +209,8 @@ export const barChartOptionsConsumption = {
 };
 
 export const callListpieChartOptions = {
-  labels: ["Processing", "Fail"],
-  colors: ["#8BBA5F", "#C13216"],
+  labels: ["Processing", "Already Exists"],
+  colors: ["#7DCEA0", "#9B59B6"],
   chart: {
     width: "50px",
   },
@@ -239,7 +239,7 @@ export const callListpieChartOptions = {
     },
   },
   fill: {
-    colors: ["#8BBA5F", "#C13216"],
+    colors: ["#7DCEA0", "#9B59B6"],
   },
   tooltip: {
     enabled: true,
@@ -247,7 +247,7 @@ export const callListpieChartOptions = {
   },
 };
 
-export const callListpieChartData = [67, 33];
+export const callListpieChartData = [61, 39];
 
 
 export const callListChartOptions = {

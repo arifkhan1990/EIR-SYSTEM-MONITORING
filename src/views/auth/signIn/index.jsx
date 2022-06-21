@@ -40,7 +40,7 @@ function SignIn() {
   );
   const googleActive = useColorModeValue(
     { bg: "secondaryGray.300" },
-    { bg: "whiteAlpha.200" }
+    { bg: "navy.700" }
   );
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
