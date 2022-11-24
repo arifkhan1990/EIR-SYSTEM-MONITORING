@@ -53,11 +53,11 @@ export default function UserReports() {
   const history = useHistory();
   
   useEffect(() =>{
-    if (localStorage.getItem('login-info')){
-      history.push("/admin");
-    }else{
-      history.push('/auth/sign-in');
-    }
+        if (localStorage.getItem('login-info')){
+          history.push("/admin/dashboard");
+        }else{
+          history.push('/auth/sign-in');
+        }
   }, []);
 
   useEffect(() => {

@@ -58,6 +58,10 @@ export default function HeaderLinks(props) {
     history.push('/auth/sign-in');
   }
 
+  function customer_query() {
+    history.push('/admin/customer-query');
+  }
+
   return (
     <Flex
       w={{ sm: "100%", md: "auto" }}
@@ -68,12 +72,12 @@ export default function HeaderLinks(props) {
       p='10px'
       borderRadius='30px'
       boxShadow={shadow}>
-      <SearchBar
+      {/* <SearchBar
         mb={secondary ? { base: "10px", md: "unset" } : "unset"}
         me='10px'
         borderRadius='30px'
-      />
-      <Flex
+      /> */}
+      {/* <Flex
         bg={ethBg}
         display={secondary ? "flex" : "none"}
         borderRadius='30px'
@@ -103,33 +107,19 @@ export default function HeaderLinks(props) {
             ETH
           </Text>
         </Text>
-      </Flex>
-      <SidebarResponsive routes={routes} />
+      </Flex> */}
+      {/* <SidebarResponsive routes={routes} /> */}
       <Menu>
-        <MenuButton p='0px'>
-          <Icon
-            mt='6px'
-            as={MdNotificationsNone}
-            color={navbarIcon}
-            w='18px'
-            h='18px'
-            me='10px'
-          />
+        <MenuButton 
+            pl='20px'
+            color='white'
+            onClick={customer_query}
+          >
+          <Text pr="10px">QUERY</Text>  
         </MenuButton>
-        <MenuList
-          boxShadow={shadow}
-          p='20px'
-          borderRadius='20px'
-          bg={menuBg}
-          border='none'
-          mt='22px'
-          me={{ base: "30px", md: "unset" }}
-          minW={{ base: "unset", md: "400px", xl: "450px" }}
-          maxW={{ base: "360px", md: "unset" }}>
-        </MenuList>
       </Menu>
 
-      <Menu>
+      {/* <Menu>
         <MenuButton p='0px'>
           <Icon
             mt='6px'
@@ -153,7 +143,7 @@ export default function HeaderLinks(props) {
           <Flex flexDirection='column'>
           </Flex>
         </MenuList>
-      </Menu>
+      </Menu> */}
 
       <Button
         variant='no-hover'
@@ -176,7 +166,7 @@ export default function HeaderLinks(props) {
         <MenuButton p='0px'>
           <Avatar
             _hover={{ cursor: "pointer" }}
-            color='white'
+            color='White'
             name='Adela Parkson'
             bg='#11047A'
             size='sm'
@@ -202,11 +192,11 @@ export default function HeaderLinks(props) {
               fontSize='sm'
               fontWeight='700'
               color={textColor}>
-              👋&nbsp; Hey, Adela
+              👋&nbsp; Hey, Admin
             </Text>
           </Flex>
           <Flex flexDirection='column' p='10px'>
-            <MenuItem
+            {/* <MenuItem
               _hover={{ bg: "none" }}
               _focus={{ bg: "none" }}
               borderRadius='8px'
@@ -219,7 +209,7 @@ export default function HeaderLinks(props) {
               borderRadius='8px'
               px='14px'>
               <Text fontSize='sm'>Newsletter Settings</Text>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
               _hover={{ bg: "none" }}
               _focus={{ bg: "none" }}

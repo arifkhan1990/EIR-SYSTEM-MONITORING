@@ -102,7 +102,7 @@ export default function AdminNavbar(props) {
         <Box mb={{ sm: "8px", md: "0px" }}>
           <Breadcrumb>
             <BreadcrumbItem color={secondaryText} fontSize='sm'>
-              <BreadcrumbLink href='#' color={secondaryText}>
+              <BreadcrumbLink href='' color={secondaryText}>
                 {brandText}
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -110,7 +110,7 @@ export default function AdminNavbar(props) {
           
           <Link
             color={mainText}
-            href='#'
+            href=''
             bg='inherit'
             borderRadius='inherit'
             fontWeight='bold'

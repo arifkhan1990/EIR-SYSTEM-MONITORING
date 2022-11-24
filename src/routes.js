@@ -16,11 +16,14 @@ import MainDashboard from "views/admin/default";
 // Auth Imports
 import SignInCentered from "views/auth/signIn";
 
+// Customer query page
+import CustomerQuery from "views/admin/customerQuery";
+
 const routes = [
   {
     name: "EIR System Monitor",
     layout: "/admin",
-    path: "",
+    path: "/dashboard",
     icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
     component: MainDashboard,
   },
@@ -30,6 +33,13 @@ const routes = [
     path: "/sign-in",
     icon: <Icon as={MdLock} width='20px' height='20px' color='inherit' />,
     component: SignInCentered,
+  },
+  {
+    name: "EIR System Monitor",
+    layout: "/admin",
+    path: "/customer-query",
+    icon: <Icon as={MdLock} width='20px' height='20px' color='inherit' />,
+    component: CustomerQuery,
   },
 ];
 
